@@ -1,6 +1,52 @@
-# Getting Started with Create React App
+# Appointment Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple appointment planner application built with React. It allows users to manage their contacts and schedule appointments.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) as part of a Codecademy challenge.
+
+## Features
+
+*   **Contacts Page (`/contacts`)**
+    *   Add new contacts with a name, phone number, and email address.
+    *   The form validates for duplicate contact names to prevent adding the same person twice.
+    *   Phone numbers are validated to match U.S. formatting.
+    *   View a list of all saved contacts.
+*   **Appointments Page (`/appointments`)**
+    *   Schedule new appointments with a title, date, and time.
+    *   Associate appointments with an existing contact from a dropdown list.
+    *   View a list of all upcoming appointments.
+
+## Project Overview
+
+This application demonstrates several key concepts in modern React development.
+
+### Core Concepts
+
+*   **Component-Based Architecture**: The application is broken down into small, reusable components located in `src/components`. Page-level components, which assemble the smaller pieces, are in `src/containers`.
+*   **React Router (`v6`)**: Client-side routing is handled by `react-router-dom`. The main routes are defined in `src/App.js`, and the `Root` component (`src/components/root/Root.js`) provides the main layout with navigation links.
+*   **State Management with Hooks**:
+    *   **Centralized State**: The main application state (the list of `contacts` and `appointments`) is managed in the top-level `App.js` component using the `useState` hook.
+    *   **Prop Drilling**: This state is passed down to child components through props. For example, `App.js` passes the `addContact` function and `contacts` array to `ContactsPage`.
+    *   **Local State**: Individual components also manage their own local state. For instance, `ContactsPage.js` uses `useState` to manage the values in the "Add Contact" form.
+*   **Side Effects with `useEffect`**: The `useEffect` hook is used in `ContactsPage.js` to perform a side effect: checking if a contact name is a duplicate whenever the `name` input changes.
+*   **Controlled Components**: All forms, such as `ContactForm.js` and `ContactPicker.js`, are controlled components. The state within the React component is the single source of truth for the input element's value.
+*   **List and Key Rendering**: The `TileList.js` component demonstrates how to render a list of items from an array using the `.map()` method. It correctly uses the `key` prop to help React identify which items have changed, are added, or are removed.
+
+### Project Structure
+
+```
+src
+├── App.js                # Main application component, state management, and routing
+├── components
+│   ├── contactForm       # Form for adding a new contact
+│   ├── contactPicker     # Dropdown for selecting a contact
+│   ├── root              # Main layout with navigation
+│   ├── tile              # Component to display a single item
+│   └── tileList          # Component to display a list of tiles
+└── containers
+    ├── appointmentsPage  # Page for managing appointments
+    └── contactsPage      # Page for managing contacts
+```
 
 ## Available Scripts
 
@@ -8,63 +54,19 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in development mode.\
+Open http://localhost:3000 to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
