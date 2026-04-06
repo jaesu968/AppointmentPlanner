@@ -16,6 +16,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     *   Associate appointments with an existing contact from a dropdown list.
     *   View a list of all upcoming appointments.
 
+## Screenshots
+
+### Contacts Page
+![Contacts page showing the Add Contact form with Name, Phone, and Email fields](media/contacts.JPG)
+
+### Appointments Page
+![Appointments page showing the Add Appointment form with Name, Date, Time, and contact picker fields](media/appointments.JPG)
+
 ## Project Overview
 
 This application demonstrates several key concepts in modern React development.
