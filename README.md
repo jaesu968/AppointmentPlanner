@@ -13,6 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     *   View a list of all saved contacts.
 *   **Appointments Page (`/appointments`)**
     *   Schedule new appointments with a title, date, and time.
+    *   The form validates that the appointment title is not empty before submitting.
     *   Associate appointments with an existing contact from a dropdown list.
     *   View a list of all upcoming appointments.
 
@@ -36,7 +37,7 @@ This application demonstrates several key concepts in modern React development.
     *   **Centralized State**: The main application state (the list of `contacts` and `appointments`) is managed in the top-level `App.js` component using the `useState` hook.
     *   **Prop Drilling**: This state is passed down to child components through props. For example, `App.js` passes the `addContact` function and `contacts` array to `ContactsPage`.
     *   **Local State**: Individual components also manage their own local state. For instance, `ContactsPage.js` uses `useState` to manage the values in the "Add Contact" form.
-*   **Side Effects with `useEffect`**: The `useEffect` hook is used in `ContactsPage.js` to perform a side effect: checking if a contact name is a duplicate whenever the `name` input changes.
+*   **Validation on Submit**: Duplicate contact name checking and appointment title validation are both performed synchronously inside each form's `handleSubmit` function, keeping validation logic co-located with the submit handler rather than as a separate side effect.
 *   **Controlled Components**: All forms, such as `ContactForm.js` and `ContactPicker.js`, are controlled components. The state within the React component is the single source of truth for the input element's value.
 *   **List and Key Rendering**: The `TileList.js` component demonstrates how to render a list of items from an array using the `.map()` method. It correctly uses the `key` prop to help React identify which items have changed, are added, or are removed.
 
